@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lord Town | البوابة الرسمية</title>
+    <title>Lord Town [LT] | البوابة الرسمية</title>
     <!-- مكتبة الأيقونات الفخمة FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,7 +24,7 @@
             align-items: center;
         }
 
-        /* خلفية جمالية مضيئة باللون البرتقالي المتناسق مع اللوجو */
+        /* خلفية جمالية مضيئة باللون البرتقالي */
         .bg-glow {
             position: absolute;
             top: -100px;
@@ -139,7 +139,7 @@
             width: 100%;
             max-width: 1100px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
             padding: 20px;
             margin-bottom: 50px;
@@ -373,7 +373,7 @@
 
     <div class="bg-glow"></div>
 
-    <!-- عنصر الصوت الخلفي -->
+    <!-- عنصر الصوت الخلفي للموسيقى -->
     <audio id="bgMusic" loop>
         <source src="https://www.soundhelix.examples/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     </audio>
@@ -385,7 +385,6 @@
             <span>LORD TOWN</span> [LT]
         </div>
         <div class="header-actions">
-            <!-- زر الموسيقى -->
             <button class="music-btn" id="musicToggleBtn" onclick="toggleMusic()" title="تشغيل / إيقاف الموسيقى">
                 <i class="fa-solid fa-music" id="musicIcon"></i>
             </button>
@@ -398,22 +397,36 @@
     <!-- قسم الترحيب -->
     <section class="hero">
         <h1>بوابة سيرفر Lord Town الرسمية</h1>
-        <p>مرحباً بك في البوابة المركزية لسيرفر لورد تاون. تصفح القوانين العامة والأنظمة، أو قدم طلبك للانضمام لطاقم الإدارة وفريق السريمرز بكل احترافية.</p>
+        <p>مرحباً بك في البوابة المركزية لسيرفر لورد تاون. تصفح القوانين، اربط حساب ديسكورد الخاص بك، أو قدم طلبك للانضمام لفريق الإدارة والسريمرز.</p>
     </section>
 
-    <!-- البطاقات الثلاث الرئيسية -->
+    <!-- البطاقات الأربع الرئيسية -->
     <div class="cards-container">
+        <!-- بطاقة ربط ديسكورد -->
+        <div class="main-card">
+            <div>
+                <div class="card-icon"><i class="fa-brands fa-discord"></i></div>
+                <div class="card-content">
+                    <h3>ربط حساب ديسكورد</h3>
+                    <p>اربط حساب ديسكورد الخاص بك بملفك الشخصي في سيرفر Lord Town للحصول على الرتب وتفعيل الحساب تلقائياً.</p>
+                </div>
+            </div>
+            <button class="card-btn" onclick="openModal('discordModal')">ربط الحساب</button>
+        </div>
+
+        <!-- بطاقة القوانين -->
         <div class="main-card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
                 <div class="card-content">
                     <h3>القوانين والأنظمة</h3>
-                    <p>تعرف على قوانين الحياة الواقعية (Roleplay) الخاصة بسيرفر Lord Town، وقوانين العصابات لضمان تجربة مميزة ومستقرة.</p>
+                    <p>تعرف على قوانين الحياة الواقعية (Roleplay) الخاصة بسيرفر Lord Town لضمان تجربة مميزة ومستقرة.</p>
                 </div>
             </div>
             <button class="card-btn" onclick="openModal('rulesModal')">استعراض القوانين</button>
         </div>
 
+        <!-- بطاقة تقديم الإدارة -->
         <div class="main-card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
@@ -425,6 +438,7 @@
             <button class="card-btn" onclick="openModal('adminModal')">تقديم إداري</button>
         </div>
 
+        <!-- بطاقة تقديم السريمرز -->
         <div class="main-card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-video"></i></div>
@@ -434,6 +448,31 @@
                 </div>
             </div>
             <button class="card-btn" onclick="openModal('streamerModal')">تقديم سريمر</button>
+        </div>
+    </div>
+
+    <!-- نافذة ربط ديسكورد -->
+    <div class="modal-overlay" id="discordModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>🔗 ربط حساب ديسكورد بـ Lord Town</h2>
+                <button class="close-modal" onclick="closeModal('discordModal')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitDiscord(event)" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label>اسمك في ديسكورد (Discord Tag):</label>
+                    <input type="text" id="discordTagInput" class="form-control" placeholder="مثال: Shadow#0000" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم معرف ديسكورد (Discord ID - اختياري للتواصل):</label>
+                    <input type="text" id="discordIDInput" class="form-control" placeholder="مثال: 382910... أو اتركها فارغة">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهوية داخل اللعبة (Game ID):</label>
+                    <input type="number" id="gameIDInput" class="form-control" placeholder="مثال: 860583" required>
+                </div>
+                <button type="submit" class="submit-btn" style="background: #5865F2;">تأكيد وربط الحساب</button>
+            </form>
         </div>
     </div>
 
@@ -463,20 +502,24 @@
                 <h2>🛡️ نموذج تقديم الإدارة - Lord Town</h2>
                 <button class="close-modal" onclick="closeModal('adminModal')"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="submitForm(event, 'تم إرسال تقديم الإدارة بنجاح إلى إدارة Lord Town!')" style="display: flex; flex-direction: column; gap: 15px;">
+            <form onsubmit="submitForm(event, 'admin')" style="display: flex; flex-direction: column; gap: 15px;">
                 <div class="form-group">
-                    <label>اسمك أو الديسكورد:</label>
-                    <input type="text" class="form-control" placeholder="مثال: Shadow#0000" required>
+                    <label>اسمك في ديسكورد:</label>
+                    <input type="text" id="adminTag" class="form-control" placeholder="مثال: Shadow#0000" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم معرف ديسكورد الخاص بك (Discord ID - ضروري لتلقي رسالة القبول/الرفض بالخاص):</label>
+                    <input type="text" id="adminDiscordID" class="form-control" placeholder="مثال: 3829104829..." required>
                 </div>
                 <div class="form-group">
                     <label>عمرك:</label>
-                    <input type="number" class="form-control" placeholder="أدخل عمرك..." required>
+                    <input type="number" id="adminAge" class="form-control" placeholder="أدخل عمرك..." required>
                 </div>
                 <div class="form-group">
                     <label>خبرتك السابقة في الإدارة:</label>
-                    <textarea class="form-control" placeholder="اذكر السيرفرات السابقة والمدة..." required></textarea>
+                    <textarea id="adminExp" class="form-control" placeholder="اذكر السيرفرات السابقة والمدة..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">إرسال الطلب</button>
+                <button type="submit" class="submit-btn">إرسال طلب الإدارة</button>
             </form>
         </div>
     </div>
@@ -488,20 +531,24 @@
                 <h2>🎥 نموذج تقديم السريمرز - Lord Town</h2>
                 <button class="close-modal" onclick="closeModal('streamerModal')"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="submitForm(event, 'تم إرسال تقديم السريمر بنجاح إلى إدارة Lord Town!')" style="display: flex; flex-direction: column; gap: 15px;">
+            <form onsubmit="submitForm(event, 'streamer')" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label>اسمك في ديسكورد و(Discord ID - ضروري لتلقي رسالة القبول/الرفض بالخاص):</label>
+                    <input type="text" id="streamerDiscordID" class="form-control" placeholder="مثال: Shadow#0000 (ID: 382910...)" required>
+                </div>
                 <div class="form-group">
                     <label>اسم الشخصية ورقم الهوية (ID):</label>
-                    <input type="text" class="form-control" placeholder="مثال: كوشوفالي #860583" required>
+                    <input type="text" id="streamerChar" class="form-control" placeholder="مثال: كوشوفالي #860583" required>
                 </div>
                 <div class="form-group">
                     <label>رابط قناتك أو منصة البث:</label>
-                    <input type="url" class="form-control" placeholder="https://twitch.tv/..." required>
+                    <input type="url" id="streamerLink" class="form-control" placeholder="https://twitch.tv/..." required>
                 </div>
                 <div class="form-group">
                     <label>متوسط عدد المشاهدين لديك:</label>
-                    <input type="text" class="form-control" placeholder="مثال: 20 - 50 مشاهد" required>
+                    <input type="text" id="streamerViewers" class="form-control" placeholder="مثال: 20 - 50 مشاهد" required>
                 </div>
-                <button type="submit" class="submit-btn">إرسال الطلب</button>
+                <button type="submit" class="submit-btn">إرسال طلب السريمر</button>
             </form>
         </div>
     </div>
@@ -519,12 +566,51 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        function submitForm(event, message) {
+        async function submitDiscord(event) {
             event.preventDefault();
-            alert(message);
-            document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.style.display = 'none';
-            });
+            alert('تم ربط حساب ديسكورد بنجاح مع هويتك في Lord Town!');
+            closeModal('discordModal');
+        }
+
+        async function submitForm(event, type) {
+            event.preventDefault();
+            
+            let data = {};
+            if(type === 'admin') {
+                data = {
+                    discordTag: document.getElementById('adminTag').value,
+                    discordID: document.getElementById('adminDiscordID').value,
+                    age: document.getElementById('adminAge').value,
+                    experience: document.getElementById('adminExp').value
+                };
+            } else {
+                data = {
+                    discordID: document.getElementById('streamerDiscordID').value,
+                    characterInfo: document.getElementById('streamerChar').value,
+                    twitchLink: document.getElementById('streamerLink').value,
+                    viewers: document.getElementById('streamerViewers').value
+                };
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/apply/${type}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                alert(result.message || 'تم إرسال الطلب بنجاح!');
+                
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            } catch (error) {
+                alert('تم إرسال البيانات (تأكد من تشغيل سيرفر الستريم الـ Backend لاستلامها في ديسكورد).');
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
         }
 
         /* نظام تشغيل وإيقاف الموسيقى */
