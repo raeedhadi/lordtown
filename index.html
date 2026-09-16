@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background-color: #0b0e14;
+            background-color: #0c0f16;
             color: #ffffff;
             display: flex;
             min-height: 100vh;
@@ -20,42 +20,50 @@
         /* القائمة الجانبية */
         .sidebar {
             width: 260px;
-            background: #111622;
+            background: #11151f;
             border-left: 1px solid #1f293d;
             display: flex;
             flex-direction: column;
             padding: 20px;
             position: fixed;
             height: 100%;
+            z-index: 100;
         }
         .logo-box {
             font-size: 20px;
             font-weight: bold;
-            color: #ff3366;
+            color: #ff3b65;
             margin-bottom: 30px;
             text-align: center;
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+            text-shadow: 0 0 10px rgba(255, 59, 101, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .nav-links {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            overflow-y: auto;
         }
         .nav-links li a {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 12px 15px;
-            color: #8a99ad;
+            color: #8b9bb4;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: 0.3s;
             font-size: 14px;
+            font-weight: 500;
         }
         .nav-links li a:hover, .nav-links li a.active {
-            background: rgba(255, 51, 102, 0.15);
-            color: #ff3366;
+            background: rgba(255, 59, 101, 0.12);
+            color: #ff3b65;
+            border-right: 3px solid #ff3b65;
         }
 
         /* المحتوى الرئيسي */
@@ -69,18 +77,32 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            background: #111622;
-            padding: 15px 25px;
-            border-radius: 12px;
+            background: #11151f;
+            padding: 18px 25px;
+            border-radius: 14px;
             border: 1px solid #1f293d;
         }
-        .user-info {
-            font-size: 14px;
-            color: #8a99ad;
-        }
-        .user-info span {
+        .header h2 {
+            font-size: 20px;
             color: #fff;
-            font-weight: bold;
+        }
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #8b9bb4;
+            background: #182030;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #283750;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00e676;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00e676;
         }
 
         /* بطاقات الإحصائيات */
@@ -91,81 +113,97 @@
             margin-bottom: 30px;
         }
         .stat-card {
-            background: #111622;
+            background: #11151f;
             border: 1px solid #1f293d;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: #ff3b65;
         }
         .stat-card h4 {
-            color: #8a99ad;
+            color: #8b9bb4;
             font-size: 13px;
             margin-bottom: 8px;
         }
         .stat-card .value {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
-            color: #ff3366;
+            color: #fff;
         }
 
-        /* قسم الأنظمة أو التطبيقات */
+        /* قسم المحتوى */
         .section-box {
-            background: #111622;
+            background: #11151f;
             border: 1px solid #1f293d;
-            padding: 25px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 14px;
         }
         .section-box h3 {
-            color: #ff3366;
+            color: #ff3b65;
             margin-bottom: 15px;
             font-size: 18px;
         }
         .section-box p {
-            color: #8a99ad;
+            color: #8b9bb4;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <div class="logo-box">Red Town Panel</div>
+        <div class="logo-box">
+            <span>⚡ لوحة التحكم</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#" class="active">🏠 الرئيسية</a></li>
-            <li><a href="#">📱 الهاتف والنظام</a></li>
-            <li><a href="#">🚗 وكالة السيارات</a></li>
+            <li><a href="#">📱 الهاتف</a></li>
             <li><a href="#">💰 البنك والأرصدة</a></li>
-            <li><a href="#">⚠️ سجل المخالفات</a></li>
-            <li><a href="#">🔒 الدارك ويب</a></li>
-            <li><a href="#">📜 القوانين والأنظمة</a></li>
+            <li><a href="#">🚗 وكالة السيارات</a></li>
+            <li><a href="#">📦 السكراب</a></li>
+            <li><a href="#">🕶️ الدارك ويب</a></li>
+            <li><a href="#">📜 الأنظمة</a></li>
         </ul>
     </div>
 
     <div class="main-content">
         <div class="header">
-            <h2>لوحة تحكم اللاعب</h2>
-            <div class="user-info">حالة الاتصال: <span style="color: #4cd137;">متصل بالسيرفر</span></div>
+            <h2>مرحباً بك، شادو</h2>
+            <div class="server-status">
+                <div class="status-dot"></div>
+                متصل بالسيرفر
+            </div>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
                 <h4>الكاش النقدي</h4>
-                <div class="value">$14,500</div>
+                <div class="value" style="color: #00e676;">$0</div>
             </div>
             <div class="stat-card">
-                <h4>الرصيد البنكي</h4>
-                <div class="value">$280,000</div>
+                <h4>الحساب البنكي</h4>
+                <div class="value" style="color: #00bcd4;">$5,000</div>
             </div>
             <div class="stat-card">
-                <h4>رقم الهوية (ID)</h4>
-                <div class="value">#4092</div>
+                <h4>رقم الهوية</h4>
+                <div class="value">#860583</div>
             </div>
         </div>
 
         <div class="section-box">
-            <h3>مرحباً بك في لوحة تحكم السيرفر</h3>
-            <p>من هنا يمكنك إدارة حسابك، تصفح السيارات، مراجعة المخالفات، والاطلاع على كافة أنظمة السيرفر بكل سهولة وسرعة.</p>
+            <h3>المركز الرئيسي لإدارة السيرفر</h3>
+            <p>جميع أنظمة السيرفر وإعداداته يتم إدارتها بالكامل من خلال الموقع. يتيح لك النظام التحكم في كافة الجوانب بسهولة وسرعة، بما في ذلك الأنظمة، الصلاحيات، البيانات، والخدمات، لضمان إدارة السيرفر بكفاءة عالية.</p>
         </div>
     </div>
 
