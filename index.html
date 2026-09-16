@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم | السيرفر الرسمي</title>
+    <title>البوابة الرسمية | السيرفر المطور</title>
+    <!-- مكتبة الأيقونات الفخمة FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,201 +13,542 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: #0c0f16;
+            background-color: #06080d;
             color: #ffffff;
-            display: flex;
             min-height: 100vh;
-        }
-        /* القائمة الجانبية */
-        .sidebar {
-            width: 260px;
-            background: #11151f;
-            border-left: 1px solid #1f293d;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            padding: 20px;
-            position: fixed;
-            height: 100%;
-            z-index: 100;
-        }
-        .logo-box {
-            font-size: 20px;
-            font-weight: bold;
-            color: #ff3b65;
-            margin-bottom: 30px;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(255, 59, 101, 0.4);
-            display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow-y: auto;
-        }
-        .nav-links li a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            color: #8b9bb4;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: 0.3s;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .nav-links li a:hover, .nav-links li a.active {
-            background: rgba(255, 59, 101, 0.12);
-            color: #ff3b65;
-            border-right: 3px solid #ff3b65;
         }
 
-        /* المحتوى الرئيسي */
-        .main-content {
-            flex: 1;
-            margin-right: 260px;
-            padding: 30px;
+        /* خلفية جمالية مضيئة ومتدرجة */
+        .bg-glow {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 42, 95, 0.15) 0%, rgba(6, 8, 13, 0) 70%);
+            z-index: -1;
+            filter: blur(50px);
         }
-        .header {
+
+        /* الهيدر العلوي والشعار */
+        header {
+            width: 100%;
+            max-width: 1100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            background: #11151f;
-            padding: 18px 25px;
-            border-radius: 14px;
-            border: 1px solid #1f293d;
+            padding: 30px 20px;
         }
-        .header h2 {
-            font-size: 20px;
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: bold;
             color: #fff;
+            letter-spacing: 1px;
         }
-        .server-status {
+
+        .logo-area span {
+            color: #ff2a5f;
+            text-shadow: 0 0 15px rgba(255, 42, 95, 0.5);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .discord-btn {
+            background: #5865F2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 13px;
-            color: #8b9bb4;
-            background: #182030;
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid #283750;
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #00e676;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #00e676;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+            transition: 0.3s ease;
         }
 
-        /* بطاقات الإحصائيات */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+        .discord-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
         }
-        .stat-card {
-            background: #11151f;
-            border: 1px solid #1f293d;
-            padding: 22px;
-            border-radius: 14px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+        /* زر تشغيل الموسيقى الفخم */
+        .music-btn {
+            background: #0d111a;
+            color: #ff2a5f;
+            border: 1px solid #1f2b42;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .music-btn:hover {
+            background: #ff2a5f;
+            color: #fff;
+            border-color: #ff2a5f;
+            box-shadow: 0 0 15px rgba(255, 42, 95, 0.4);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #8a99ad;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* بطاقات الأقسام الرئيسية */
+        .cards-container {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .main-card {
+            background: #0d111a;
+            border: 1px solid #161f30;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             position: relative;
             overflow: hidden;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .stat-card::after {
+
+        .main-card::before {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
-            width: 4px;
-            height: 100%;
-            background: #ff3b65;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff2a5f, transparent);
+            opacity: 0;
+            transition: 0.3s;
         }
-        .stat-card h4 {
-            color: #8b9bb4;
-            font-size: 13px;
-            margin-bottom: 8px;
+
+        .main-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff2a5f;
+            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.15);
         }
-        .stat-card .value {
+
+        .main-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 42, 95, 0.1);
+            border: 1px solid rgba(255, 42, 95, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 24px;
-            font-weight: bold;
+            color: #ff2a5f;
+            margin-bottom: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
             color: #fff;
         }
 
-        /* قسم المحتوى */
-        .section-box {
-            background: #11151f;
-            border: 1px solid #1f293d;
-            padding: 30px;
-            border-radius: 14px;
-        }
-        .section-box h3 {
-            color: #ff3b65;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        .section-box p {
-            color: #8b9bb4;
+        .card-content p {
+            color: #7c8d9e;
             font-size: 14px;
-            line-height: 1.7;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .card-btn {
+            background: #161f30;
+            color: #fff;
+            border: 1px solid #222e45;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            display: block;
+            cursor: pointer;
+        }
+
+        .card-btn:hover {
+            background: #ff2a5f;
+            border-color: #ff2a5f;
+            box-shadow: 0 0 15px rgba(255, 42, 95, 0.4);
+        }
+
+        /* النوافذ المنبثقة (Modals) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 8, 13, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: #0d111a;
+            border: 1px solid #1f2b42;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #161f30;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            color: #ff2a5f;
+            font-size: 20px;
+        }
+
+        .close-modal {
+            background: #161f30;
+            color: #fff;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+            background: #ff2a5f;
+        }
+
+        /* النماذج وإدخال البيانات */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: #a0aec0;
+            font-weight: 500;
+        }
+
+        .form-control {
+            background: #131926;
+            border: 1px solid #1f2b42;
+            padding: 12px 15px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #ff2a5f;
+            box-shadow: 0 0 10px rgba(255, 42, 95, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: #ff2a5f;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: #e02352;
+            box-shadow: 0 6px 20px rgba(255, 42, 95, 0.5);
+        }
+
+        .rules-content {
+            color: #a0aec0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .rules-content h4 {
+            color: #fff;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            color: #4f5d75;
+            font-size: 13px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <div class="logo-box">
-            <span>⚡ لوحة التحكم</span>
+    <div class="bg-glow"></div>
+
+    <!-- عنصر الصوت الخلفي (ملف موسيقى هادئة بصيغة MP3 من مصدر مباشر) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.examples/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo-area">
+            <i class="fa-solid fa-shield-halved" style="color: #ff2a5f;"></i>
+            <span>RED TOWN</span> PORTAL
         </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active">🏠 الرئيسية</a></li>
-            <li><a href="#">📱 الهاتف</a></li>
-            <li><a href="#">💰 البنك والأرصدة</a></li>
-            <li><a href="#">🚗 وكالة السيارات</a></li>
-            <li><a href="#">📦 السكراب</a></li>
-            <li><a href="#">🕶️ الدارك ويب</a></li>
-            <li><a href="#">📜 الأنظمة</a></li>
-        </ul>
+        <div class="header-actions">
+            <!-- زر الموسيقى -->
+            <button class="music-btn" id="musicToggleBtn" onclick="toggleMusic()" title="تشغيل / إيقاف الموسيقى">
+                <i class="fa-solid fa-music" id="musicIcon"></i>
+            </button>
+            <a href="https://discord.gg/yourserver" target="_blank" class="discord-btn">
+                <i class="fa-brands fa-discord"></i> ديسكورد السيرفر
+            </a>
+        </div>
+    </header>
+
+    <!-- قسم الترحيب -->
+    <section class="hero">
+        <h1>بوابة الخدمات والقوانين الرسمية</h1>
+        <p>مرحباً بك في البوابة المركزية للسيرفر. من هنا يمكنك الاطلاع على كافة القوانين والأنظمة، أو تقديم طلبات الانضمام لطاقم الإدارة وفريق السريمرز بكل سهولة واحترافية.</p>
+    </section>
+
+    <!-- البطاقات الثلاث الرئيسية -->
+    <div class="cards-container">
+        <div class="main-card">
+            <div>
+                <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+                <div class="card-content">
+                    <h3>القوانين والأنظمة</h3>
+                    <p>تعرف على قوانين الحياة الواقعية (Roleplay)، قوانين العصابات، والتعليمات العامة لتجنب العقوبات والمخالفات داخل السيرفر.</p>
+                </div>
+            </div>
+            <button class="card-btn" onclick="openModal('rulesModal')">استعراض القوانين</button>
+        </div>
+
+        <div class="main-card">
+            <div>
+                <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <div class="card-content">
+                    <h3>تقديم الإدارة</h3>
+                    <p>هل تمتلك الخبرة الكافية لمساعدة اللاعبين وحل مشاكلهم؟ قدم الآن انضمامك إلى طاقم الإدارة الرسمي.</p>
+                </div>
+            </div>
+            <button class="card-btn" onclick="openModal('adminModal')">تقديم إداري</button>
+        </div>
+
+        <div class="main-card">
+            <div>
+                <div class="card-icon"><i class="fa-solid fa-video"></i></div>
+                <div class="card-content">
+                    <h3>تقديم السريمرز</h3>
+                    <p>إذا كنت تبث فعاليات السيرفر على منصات البث (تويتش/يوتيوب/تيك توك)، قدم هنا للحصول على رتبة وصلاحيات البث المميزة.</p>
+                </div>
+            </div>
+            <button class="card-btn" onclick="openModal('streamerModal')">تقديم سريمر</button>
+        </div>
     </div>
 
-    <div class="main-content">
-        <div class="header">
-            <h2>مرحباً بك، شادو</h2>
-            <div class="server-status">
-                <div class="status-dot"></div>
-                متصل بالسيرفر
+    <!-- نافذة القوانين -->
+    <div class="modal-overlay" id="rulesModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>📜 القوانين والأنظمة العامة</h2>
+                <button class="close-modal" onclick="closeModal('rulesModal')"><i class="fa-solid fa-xmark"></i></button>
             </div>
-        </div>
+            <div class="rules-content">
+                <h4>1. قوانين الحياة الواقعية (Roleplay)</h4>
+                <p>- يمنع منعاً باتاً قتل اللاعبين بدون سبب مقنع (RDM).</p>
+                <p>- يجب تجسيد الخوف على حياتك عند التعرض للخطر (FailRP ممنوع).</p>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h4>الكاش النقدي</h4>
-                <div class="value" style="color: #00e676;">$0</div>
+                <h4>2. قوانين العصابات والمافيا</h4>
+                <p>- الحد الأقصى لأفراد العصابة في العمليات هو العدد المسموح به قانونياً.</p>
+                <p>- يمنع التخريب العشوائي أو التعرض للمواطنين الآمنين في الأماكن العامة.</p>
             </div>
-            <div class="stat-card">
-                <h4>الحساب البنكي</h4>
-                <div class="value" style="color: #00bcd4;">$5,000</div>
-            </div>
-            <div class="stat-card">
-                <h4>رقم الهوية</h4>
-                <div class="value">#860583</div>
-            </div>
-        </div>
-
-        <div class="section-box">
-            <h3>المركز الرئيسي لإدارة السيرفر</h3>
-            <p>جميع أنظمة السيرفر وإعداداته يتم إدارتها بالكامل من خلال الموقع. يتيح لك النظام التحكم في كافة الجوانب بسهولة وسرعة، بما في ذلك الأنظمة، الصلاحيات، البيانات، والخدمات، لضمان إدارة السيرفر بكفاءة عالية.</p>
         </div>
     </div>
+
+    <!-- نافذة تقديم الإدارة -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>🛡️ نموذج تقديم الإدارة</h2>
+                <button class="close-modal" onclick="closeModal('adminModal')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitForm(event, 'تم إرسال تقديم الإدارة بنجاح!')" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label>اسمك الحقيقي أو الديسكورد:</label>
+                    <input type="text" class="form-control" placeholder="مثال: Shadow#0000" required>
+                </div>
+                <div class="form-group">
+                    <label>عمرك:</label>
+                    <input type="number" class="form-control" placeholder="أدخل عمرك..." required>
+                </div>
+                <div class="form-group">
+                    <label>خبرتك السابقة في الإدارة:</label>
+                    <textarea class="form-control" placeholder="اذكر السيرفرات السابقة والمدة..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تقديم السريمرز -->
+    <div class="modal-overlay" id="streamerModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>🎥 نموذج تقديم السريمرز</h2>
+                <button class="close-modal" onclick="closeModal('streamerModal')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitForm(event, 'تم إرسال تقديم السريمر بنجاح!')" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group">
+                    <label>اسم الشخصية ورقم الهوية (ID):</label>
+                    <input type="text" class="form-control" placeholder="مثال: كوشوفالي #860583" required>
+                </div>
+                <div class="form-group">
+                    <label>رابط قناتك أو منصة البث:</label>
+                    <input type="url" class="form-control" placeholder="https://twitch.tv/..." required>
+                </div>
+                <div class="form-group">
+                    <label>متوسط عدد المشاهدين لديك:</label>
+                    <input type="text" class="form-control" placeholder="مثال: 20 - 50 مشاهد" required>
+                </div>
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة © Red Town Server 2026
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function submitForm(event, message) {
+            event.preventDefault();
+            alert(message);
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        /* نظام تشغيل وإيقاف الموسيقى */
+        const music = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.classList.remove('fa-volume-high');
+                musicIcon.classList.add('fa-music');
+                isPlaying = false;
+            } else {
+                music.play().then(() => {
+                    musicIcon.classList.remove('fa-music');
+                    musicIcon.classList.add('fa-volume-high');
+                    isPlaying = true;
+                }).catch(e => {
+                    console.log("المتصفح منع التشغيل التلقائي:", e);
+                });
+            }
+        }
+    </script>
 
 </body>
 </html>
