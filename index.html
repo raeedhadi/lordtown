@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lord Town [LT] | البوابة الرسمية</title>
-    <!-- مكتبة الأيقونات الفخمة FontAwesome -->
+    <!-- مكتبة الأيقونات الفخمة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -66,7 +66,6 @@
             gap: 12px;
         }
 
-        /* زر ربط ديسكورد في الهيدر أو بطاقة الحساب */
         .discord-connect-btn {
             background: #5865F2;
             color: white;
@@ -80,7 +79,8 @@
             gap: 8px;
             box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
             transition: 0.3s ease;
-            cursor: border;
+            cursor: pointer;
+            border: none;
         }
 
         .discord-connect-btn:hover {
@@ -362,10 +362,9 @@
             <button class="music-btn" id="musicToggleBtn" onclick="toggleMusic()" title="تشغيل / إيقاف الموسيقى">
                 <i class="fa-solid fa-music" id="musicIcon"></i>
             </button>
-            <!-- زر تسجيل الدخول بديسكورد (يتم تغليفه أو تحويله برابط OAuth2 الرسمي) -->
-            <a href="https://discord.com/api/oauth2/authorize?client_id=1549514652017500360&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify" class="discord-connect-btn">
+            <button onclick="simulateDiscordLogin()" class="discord-connect-btn">
                 <i class="fa-brands fa-discord"></i> ربط حساب ديسكورد
-            </a>
+            </button>
         </div>
     </header>
 
@@ -375,7 +374,6 @@
     </section>
 
     <div class="cards-container">
-        <!-- بطاقة القوانين -->
         <div class="main-card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
@@ -387,7 +385,6 @@
             <button class="card-btn" onclick="openModal('rulesModal')">استعراض القوانين</button>
         </div>
 
-        <!-- بطاقة تقديم الإدارة -->
         <div class="main-card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
@@ -399,7 +396,6 @@
             <button class="card-btn" onclick="checkAuthAndOpen('adminModal')">تقديم إداري</button>
         </div>
 
-        <!-- بطاقة تقديم السريمرز -->
         <div class="main-card">
             <div>
                 <div class="card-icon"><i class="fa-solid fa-video"></i></div>
@@ -478,7 +474,6 @@
     </footer>
 
     <script>
-        // متغير محلي يتحقق إذا اللاعب ربط حسابه (في الواقع تجيبه من الجلسة Session أو الـ Cookie)
         let isUserConnected = false; 
         let currentDiscordUser = { username: "", id: "" };
 
@@ -490,7 +485,6 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // دالة حماية التقديمات: تتأكد هل اللاعب رابط ديسكورد ولا لا؟
         function checkAuthAndOpen(modalId) {
             if (!isUserConnected) {
                 alert('⚠️ يجب عليك ربط حساب ديسكورد أولاً من الزر العلوي لتتمكن من التقديم!');
@@ -499,10 +493,13 @@
             openModal(modalId);
         }
 
-        // محاكاة نجاح الربط (تستبدلها بالبيانات الحقيقية القادمة من ديسكورد بعد الـ Callback)
-        function simulateDiscordLogin(username, discordID) {
+        function simulateDiscordLogin() {
+            let username = prompt("أدخل اسم حسابك في ديسكورد (مثال: Shadow#0000):");
+            let discordId = prompt("أدخل الأيدي الخاص بك في ديسكورد (Discord ID - أرقام):");
+            if (!username || !discordId) return;
+            
             isUserConnected = true;
-            currentDiscordUser = { username, id: discordID };
+            currentDiscordUser = { username: username, id: discordId };
             
             const authArea = document.getElementById('headerAuthArea');
             authArea.innerHTML = `
@@ -511,6 +508,7 @@
                     <i class="fa-brands fa-discord" style="color: #5865F2;"></i> ${username}
                 </div>
             `;
+            alert('✅ تم ربط حساب ديسكورد بنجاح! يمكنك الآن فتح النماذج وتقديم الطلبات.');
         }
 
         async function submitForm(event, type) {
@@ -538,11 +536,10 @@
                 });
                 
                 const result = await response.json();
-                alert(result.message || 'تم إرسال الطلب بنجاح وسيتم إرسال الرد عبر الخاص!');
+                alert(result.message || 'تم إرسال الطلب بنجاح وسيقوم البوت بإرسال النتيجة بالخاص!');
                 document.querySelectorAll('.modal-overlay').forEach(modal => modal.style.display = 'none');
             } catch (error) {
-                alert('تم إرسال بيانات التقديم بنجاح إلى سيرفر البوت!');
-                document.querySelectorAll('.modal-overlay').forEach(modal => modal.style.display = 'none');
+                alert('حدث خطأ أثناء الاتصال بسيرفر البوت. تأكد أن البوت يعمل.');
             }
         }
 
