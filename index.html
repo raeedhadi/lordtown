@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البوابة الرسمية | السيرفر المطور</title>
+    <title>Lord Town | البوابة الرسمية</title>
     <!-- مكتبة الأيقونات الفخمة FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #06080d;
+            background-color: #07090e;
             color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
@@ -24,7 +24,7 @@
             align-items: center;
         }
 
-        /* خلفية جمالية مضيئة ومتدرجة */
+        /* خلفية جمالية مضيئة باللون البرتقالي المتناسق مع اللوجو */
         .bg-glow {
             position: absolute;
             top: -100px;
@@ -32,7 +32,7 @@
             transform: translateX(-50%);
             width: 600px;
             height: 300px;
-            background: radial-gradient(circle, rgba(255, 42, 95, 0.15) 0%, rgba(6, 8, 13, 0) 70%);
+            background: radial-gradient(circle, rgba(255, 102, 0, 0.15) 0%, rgba(7, 9, 14, 0) 70%);
             z-index: -1;
             filter: blur(50px);
         }
@@ -58,8 +58,8 @@
         }
 
         .logo-area span {
-            color: #ff2a5f;
-            text-shadow: 0 0 15px rgba(255, 42, 95, 0.5);
+            color: #ff6600; /* البرتقالي الخاص بـ LT */
+            text-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
         }
 
         .header-actions {
@@ -88,10 +88,10 @@
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
         }
 
-        /* زر تشغيل الموسيقى الفخم */
+        /* زر تشغيل الموسيقى */
         .music-btn {
             background: #0d111a;
-            color: #ff2a5f;
+            color: #ff6600;
             border: 1px solid #1f2b42;
             width: 42px;
             height: 42px;
@@ -106,10 +106,10 @@
         }
 
         .music-btn:hover {
-            background: #ff2a5f;
+            background: #ff6600;
             color: #fff;
-            border-color: #ff2a5f;
-            box-shadow: 0 0 15px rgba(255, 42, 95, 0.4);
+            border-color: #ff6600;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
         }
 
         /* القسم الرئيسي (Hero Section) */
@@ -166,15 +166,15 @@
             right: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #ff2a5f, transparent);
+            background: linear-gradient(90deg, transparent, #ff6600, transparent);
             opacity: 0;
             transition: 0.3s;
         }
 
         .main-card:hover {
             transform: translateY(-5px);
-            border-color: #ff2a5f;
-            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.15);
+            border-color: #ff6600;
+            box-shadow: 0 15px 35px rgba(255, 102, 0, 0.15);
         }
 
         .main-card:hover::before {
@@ -184,14 +184,14 @@
         .card-icon {
             width: 60px;
             height: 60px;
-            background: rgba(255, 42, 95, 0.1);
-            border: 1px solid rgba(255, 42, 95, 0.3);
+            background: rgba(255, 102, 0, 0.1);
+            border: 1px solid rgba(255, 102, 0, 0.3);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            color: #ff2a5f;
+            color: #ff6600;
             margin-bottom: 20px;
         }
 
@@ -224,9 +224,9 @@
         }
 
         .card-btn:hover {
-            background: #ff2a5f;
-            border-color: #ff2a5f;
-            box-shadow: 0 0 15px rgba(255, 42, 95, 0.4);
+            background: #ff6600;
+            border-color: #ff6600;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
         }
 
         /* النوافذ المنبثقة (Modals) */
@@ -236,7 +236,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(6, 8, 13, 0.85);
+            background: rgba(7, 9, 14, 0.85);
             backdrop-filter: blur(8px);
             display: none;
             justify-content: center;
@@ -275,7 +275,7 @@
         }
 
         .modal-header h2 {
-            color: #ff2a5f;
+            color: #ff6600;
             font-size: 20px;
         }
 
@@ -292,7 +292,7 @@
         }
 
         .close-modal:hover {
-            background: #ff2a5f;
+            background: #ff6600;
         }
 
         /* النماذج وإدخال البيانات */
@@ -320,8 +320,8 @@
         }
 
         .form-control:focus {
-            border-color: #ff2a5f;
-            box-shadow: 0 0 10px rgba(255, 42, 95, 0.2);
+            border-color: #ff6600;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.2);
         }
 
         textarea.form-control {
@@ -330,7 +330,7 @@
         }
 
         .submit-btn {
-            background: #ff2a5f;
+            background: #ff6600;
             color: white;
             border: none;
             padding: 14px;
@@ -339,12 +339,12 @@
             font-size: 15px;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
         }
 
         .submit-btn:hover {
-            background: #e02352;
-            box-shadow: 0 6px 20px rgba(255, 42, 95, 0.5);
+            background: #e05a00;
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.5);
         }
 
         .rules-content {
@@ -373,7 +373,7 @@
 
     <div class="bg-glow"></div>
 
-    <!-- عنصر الصوت الخلفي (ملف موسيقى هادئة بصيغة MP3 من مصدر مباشر) -->
+    <!-- عنصر الصوت الخلفي -->
     <audio id="bgMusic" loop>
         <source src="https://www.soundhelix.examples/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     </audio>
@@ -381,8 +381,8 @@
     <!-- الهيدر -->
     <header>
         <div class="logo-area">
-            <i class="fa-solid fa-shield-halved" style="color: #ff2a5f;"></i>
-            <span>RED TOWN</span> PORTAL
+            <i class="fa-solid fa-crown" style="color: #ff6600;"></i>
+            <span>LORD TOWN</span> [LT]
         </div>
         <div class="header-actions">
             <!-- زر الموسيقى -->
@@ -397,8 +397,8 @@
 
     <!-- قسم الترحيب -->
     <section class="hero">
-        <h1>بوابة الخدمات والقوانين الرسمية</h1>
-        <p>مرحباً بك في البوابة المركزية للسيرفر. من هنا يمكنك الاطلاع على كافة القوانين والأنظمة، أو تقديم طلبات الانضمام لطاقم الإدارة وفريق السريمرز بكل سهولة واحترافية.</p>
+        <h1>بوابة سيرفر Lord Town الرسمية</h1>
+        <p>مرحباً بك في البوابة المركزية لسيرفر لورد تاون. تصفح القوانين العامة والأنظمة، أو قدم طلبك للانضمام لطاقم الإدارة وفريق السريمرز بكل احترافية.</p>
     </section>
 
     <!-- البطاقات الثلاث الرئيسية -->
@@ -408,7 +408,7 @@
                 <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
                 <div class="card-content">
                     <h3>القوانين والأنظمة</h3>
-                    <p>تعرف على قوانين الحياة الواقعية (Roleplay)، قوانين العصابات، والتعليمات العامة لتجنب العقوبات والمخالفات داخل السيرفر.</p>
+                    <p>تعرف على قوانين الحياة الواقعية (Roleplay) الخاصة بسيرفر Lord Town، وقوانين العصابات لضمان تجربة مميزة ومستقرة.</p>
                 </div>
             </div>
             <button class="card-btn" onclick="openModal('rulesModal')">استعراض القوانين</button>
@@ -419,7 +419,7 @@
                 <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
                 <div class="card-content">
                     <h3>تقديم الإدارة</h3>
-                    <p>هل تمتلك الخبرة الكافية لمساعدة اللاعبين وحل مشاكلهم؟ قدم الآن انضمامك إلى طاقم الإدارة الرسمي.</p>
+                    <p>هل تملك القدرة على إدارة مجتمع لورد تاون ومساعدة اللاعبين؟ قدم طلبك الآن للانضمام لطاقم الإدارة.</p>
                 </div>
             </div>
             <button class="card-btn" onclick="openModal('adminModal')">تقديم إداري</button>
@@ -430,7 +430,7 @@
                 <div class="card-icon"><i class="fa-solid fa-video"></i></div>
                 <div class="card-content">
                     <h3>تقديم السريمرز</h3>
-                    <p>إذا كنت تبث فعاليات السيرفر على منصات البث (تويتش/يوتيوب/تيك توك)، قدم هنا للحصول على رتبة وصلاحيات البث المميزة.</p>
+                    <p>إذا كنت تبث فعاليات Lord Town على منصات البث المختلفة، قدم هنا للحصول على رتبة وصلاحيات السريمر المعتمد.</p>
                 </div>
             </div>
             <button class="card-btn" onclick="openModal('streamerModal')">تقديم سريمر</button>
@@ -441,17 +441,17 @@
     <div class="modal-overlay" id="rulesModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h2>📜 القوانين والأنظمة العامة</h2>
+                <h2>📜 قوانين سيرفر Lord Town</h2>
                 <button class="close-modal" onclick="closeModal('rulesModal')"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="rules-content">
                 <h4>1. قوانين الحياة الواقعية (Roleplay)</h4>
-                <p>- يمنع منعاً باتاً قتل اللاعبين بدون سبب مقنع (RDM).</p>
-                <p>- يجب تجسيد الخوف على حياتك عند التعرض للخطر (FailRP ممنوع).</p>
+                <p>- يمنع منعاً باتاً قتل اللاعبين بدون سبب مقنع (RDM) داخل Lord Town.</p>
+                <p>- الالتزام بتجسيد الخوف على الحياة الحقيقية للشخصية (FailRP ممنوع).</p>
 
                 <h4>2. قوانين العصابات والمافيا</h4>
-                <p>- الحد الأقصى لأفراد العصابة في العمليات هو العدد المسموح به قانونياً.</p>
-                <p>- يمنع التخريب العشوائي أو التعرض للمواطنين الآمنين في الأماكن العامة.</p>
+                <p>- الالتزام بالأعداد المسموح بها أثناء العمليات والسطور.</p>
+                <p>- يمنع التخريب العشوائي للأماكن الآمنة وممتلكات المواطنين.</p>
             </div>
         </div>
     </div>
@@ -460,12 +460,12 @@
     <div class="modal-overlay" id="adminModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h2>🛡️ نموذج تقديم الإدارة</h2>
+                <h2>🛡️ نموذج تقديم الإدارة - Lord Town</h2>
                 <button class="close-modal" onclick="closeModal('adminModal')"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="submitForm(event, 'تم إرسال تقديم الإدارة بنجاح!')" style="display: flex; flex-direction: column; gap: 15px;">
+            <form onsubmit="submitForm(event, 'تم إرسال تقديم الإدارة بنجاح إلى إدارة Lord Town!')" style="display: flex; flex-direction: column; gap: 15px;">
                 <div class="form-group">
-                    <label>اسمك الحقيقي أو الديسكورد:</label>
+                    <label>اسمك أو الديسكورد:</label>
                     <input type="text" class="form-control" placeholder="مثال: Shadow#0000" required>
                 </div>
                 <div class="form-group">
@@ -485,10 +485,10 @@
     <div class="modal-overlay" id="streamerModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h2>🎥 نموذج تقديم السريمرز</h2>
+                <h2>🎥 نموذج تقديم السريمرز - Lord Town</h2>
                 <button class="close-modal" onclick="closeModal('streamerModal')"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="submitForm(event, 'تم إرسال تقديم السريمر بنجاح!')" style="display: flex; flex-direction: column; gap: 15px;">
+            <form onsubmit="submitForm(event, 'تم إرسال تقديم السريمر بنجاح إلى إدارة Lord Town!')" style="display: flex; flex-direction: column; gap: 15px;">
                 <div class="form-group">
                     <label>اسم الشخصية ورقم الهوية (ID):</label>
                     <input type="text" class="form-control" placeholder="مثال: كوشوفالي #860583" required>
@@ -507,7 +507,7 @@
     </div>
 
     <footer>
-        جميع الحقوق محفوظة © Red Town Server 2026
+        جميع الحقوق محفوظة © Lord Town [LT] Server 2026
     </footer>
 
     <script>
