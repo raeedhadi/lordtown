@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lord Town [LT] | البوابة الرسمية</title>
-    <!-- مكتبة الأيقونات الفخمة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -529,7 +528,8 @@
             }
 
             try {
-                const response = await fetch(`http://localhost:3000/api/apply/${type}`, {
+                // تم تحديث الرابط هنا ليطابق رابط استضافتك الحقيقي بالكامل
+                const response = await fetch(`https://sto2b73899.apps.bot-hosting.cloud/api/apply/${type}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
